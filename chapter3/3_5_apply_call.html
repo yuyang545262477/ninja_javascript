@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply && call</title>
+    <style>
+        #results li.fail {
+            color: red
+        }
+
+        #results li.pass {
+            color: greenyellow;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="results"></div>
+<script src="../simple.js"></script>
+<script>
+    function NinJia() {
+        var results = 0;
+        for (var n = 0; n < arguments.length; n++) {
+            results += arguments[n];
+        }
+        this.results = results;
+    }
+    var ninjia1 = {};
+    var ninjia2 = {};
+
+    NinJia.apply(ninjia1, [1, 2, 3]);
+    NinJia.call(ninjia2, 1, 2, 3);
+
+    assert(ninjia1.results === 6, "apply success");
+    assert(ninjia2.results === 6, "call success");
+
+</script>
+</body>
+</html>

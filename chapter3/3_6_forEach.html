@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply && call</title>
+    <style>
+        #results li.fail {
+            color: red
+        }
+
+        #results li.pass {
+            color: greenyellow;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="results"></div>
+<script src="../simple.js"></script>
+<script>
+    function __forEach(Array_name, callback) {
+        for (var i = 0; i < Array_name.length; i++) {
+            callback.call(Array_name[i], i);
+        }
+    }
+    //    test
+    var _Array = ['yuyang', 'yangmao', 'zhangxiaoxian'];
+    __forEach(_Array, function (index) {
+        assert(this == _Array[index], '_forEach success');
+    })
+
+</script>
+</body>
+</html>

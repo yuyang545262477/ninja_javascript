@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>assert suite</title>
+    <title>Assert Suite</title>
+    <style>
+        #results li.pass {
+            color: green
+        }
+
+        #results li.fail {
+            color: red
+        }
+    </style>
     <script>
         (function () {
             var results;
+
             this.assert = function assert(value, desc) {
                 var li = document.createElement('li');
                 li.className = value ? 'pass' : 'fail';
@@ -16,39 +26,28 @@
                 }
                 return li;
             };
+
             this.test = function test(name, fn) {
                 results = document.getElementById('results');
                 results = assert(true, name).appendChild(document.createElement('ul'));
                 fn();
-            }
+            };
         })();
 
         window.onload = function () {
-            test('A test', function () {
-                assert(true, 'First assertion completed');
-                assert(true, 'Second assertion completed');
-                assert(true, 'Third assertion completed');
+            test('one test', function () {
+                assert(true, '第一条测试');
+                assert(true, '第二条测试');
+                assert(true, '第三条测试');
             });
-            test('Another test', function () {
-                assert(true, 'First testcompleted');
-                assert(false, 'Second test completed');
-                assert(true, 'Third assertion completed');
-            });
-            test('A third test', function () {
-                assert(null, 'fail');
-                assert(5, 'pass');
-            });
-        }
-    </script>
-    <style>
-        #results li.pass {
-            color: green
+            test('two test', function () {
+                assert(false, '第1条测试');
+                assert(false, '第2条测试');
+                assert(false, '第3条测试');
+            })
         }
 
-        #results li.fail {
-            color: red
-        }
-    </style>
+    </script>
 </head>
 <body>
 <ul id="results"></ul>

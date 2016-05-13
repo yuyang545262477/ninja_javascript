@@ -1,0 +1,41 @@
+<!--
+声明.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+    <script src="../simple.js"></script>
+    <style>
+        #results li.pass {
+            color: cornflowerblue
+        }
+
+        #results li.fail {
+            color: red
+        }
+    </style>
+
+</head>
+<body>
+<ul id="results"></ul>
+<script>
+    function isNimble() {
+        return true;
+    }
+    assert(typeof window.isNimble === 'function', 'isNimble() has a name');
+    assert(isNimble.name === 'isNimble', "isNimble has a name");
+    var canFly = function () {
+        return true;
+    };
+    assert(typeof canFly === 'function', "canFly is defined");
+    assert(canFly.name === '', 'canFly has no name');
+
+    window.isDeadly = function () {
+        return true;
+    };
+    assert(typeof window.isDeadly === 'function', "is Deadly defined");
+</script>
+</body>
+</html>
