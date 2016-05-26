@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Core Closure</title>
+    <link rel="stylesheet" href="../simple.css">
+</head>
+<body>
+<h1>Javascript test</h1>
+<div id="results"></div>
+<script src="../simple.js"></script>
+<!--代码写在下面-->
+<script>
+    var outValue = 'ninja';
+    var later;
+
+    function outerFunction() {
+        var innerValue = 'samurai';
+
+        function innerFunction(paramValue) {
+            assert(outValue, 'I can see the outerValue');
+            assert(innerValue, 'I can see the InnerValue');
+            assert(paramValue, 'I can see the paramValue');
+            assert(tooLate, 'I can see the tooLate');
+        }
+
+        later = innerFunction;
+    }
+    assert(!tooLate, "outer can't see the tooLate");
+
+    var tooLate = 'ronin';
+
+    outerFunction();
+    later('hello');
+    //    outerFunction()
+
+</script>
+</body>
+</html>

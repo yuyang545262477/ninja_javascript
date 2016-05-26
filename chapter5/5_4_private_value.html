@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Value</title>
+    <link rel="stylesheet" href="../simple.css">
+</head>
+<body>
+<h1>Javascript test</h1>
+<div id="results"></div>
+<script src="../simple.js"></script>
+<!--代码写在下面-->
+<script>
+    function Ninja() {
+        var feints = 0;
+        this.getFeints = function () {
+            return feints;
+        };
+        this.feint = function () {
+            feints++;
+        }
+    }
+
+    var ninja = new Ninja();
+
+    ninja.feint();
+
+    assert(ninja.getFeints() == 1, "We're  able to access the internal feint count.");
+    assert(ninja.feints == undefined, 'we cant see private data');
+
+</script>
+</body>
+</html>

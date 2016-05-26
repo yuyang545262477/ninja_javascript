@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closure setInterval</title>
+    <link rel="stylesheet" href="../simple.css">
+</head>
+<body>
+<h1>Javascript test</h1>
+<div id="results"></div>
+<div id="box" style="position: relative">哇哈哈哈</div>
+<!--<script src="../jquery-2.1.1.min.js"></script>-->
+<script src="../simple.js"></script>
+<!--代码写在下面-->
+<script>
+    function animateIt(elementId) {
+        var element = document.getElementById(elementId);
+        var tick = 0;
+
+        var timer = setInterval(function () {
+            if (tick < 100) {
+                element.style.left = element.style.top = tick + 'px';
+                tick++;
+            } else {
+                clearInterval(timer);
+                assert(tick == 100, 'tick access via a closure');
+                assert(element, 'element also access via a closure');
+                assert(timer, 'timer also access via a closure');
+            }
+        }, 10);
+    }
+
+    animateIt('box');
+
+</script>
+</body>
+</html>

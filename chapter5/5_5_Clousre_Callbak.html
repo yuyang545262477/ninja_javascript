@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closure Callback</title>
+    <link rel="stylesheet" href="../simple.css">
+</head>
+<body>
+<h1>Javascript test</h1>
+<div id="testSubject"></div>
+<button id="testButton" type="button">Go!</button>
+<div id="results"></div>
+<script src="../jquery-2.1.1.min.js"></script>
+<script src="../simple.js"></script>
+<!--代码写在下面-->
+<script>
+    $('#testButton').click(function () {
+        var $element = $('#testSubject');
+        $element.html('Loading');
+        $.ajax({
+            url: 'test.html',
+            success: function (html) {
+                assert($element, 'I can see the $element');
+                $element.html(html);
+            }
+        })
+    })
+
+</script>
+</body>
+</html>

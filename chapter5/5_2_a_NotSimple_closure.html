@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A simple closure</title>
+    <link rel="stylesheet" href="../simple.css">
+</head>
+<body>
+<h1>Javascript test</h1>
+<div id="results"></div>
+<script src="../simple.js"></script>
+<!--代码写在下面-->
+<script>
+    var outerValue = 'ninja';
+    var later;
+
+    function outerFunction() {
+        var innerValue = 'samurai';
+
+        function innerFunction() {
+            assert(outerValue, 'I can see the ninja');
+            assert(innerValue, 'I can see the samurai');
+        }
+
+        later = innerFunction;
+    }
+
+    outerFunction();
+    later();
+
+</script>
+</body>
+</html>

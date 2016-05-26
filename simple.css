@@ -1,0 +1,7 @@
+#results li.fail {
+    color: red
+}
+
+#results li.pass {
+    color: greenyellow;
+}
